@@ -13,6 +13,15 @@ app.use(body_parser.urlencoded());
 
 app.use(morgan('dev'));
 
+
+const log=(request,response,next)=>{
+    console.log("Logging")
+
+    next();
+}
+
+app.use(log); //run for the entire api
+
 app.get('/',(request,response)=>{
     response.send({"message":"Hello World"});
 })
@@ -37,10 +46,16 @@ app.get('/calc',(request,response)=>{
     response.send({"message":"This adds two numbers"});
 })
 
-app.post('/calc',(request,response)=>{
+
+//runs for a specific route 
+app.post('/calc',log,(request,response)=>{
     total=request.body.x + request.body.y
 
     response.send({"total":total})
+})
+
+app.post('/data',(request,response)=>{
+    response.send(request.body)
 })
 
 
