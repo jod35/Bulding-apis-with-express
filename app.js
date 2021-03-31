@@ -3,6 +3,7 @@ const body_parser =require('body-parser');
 const morgan = require('morgan');
 const cors= require('cors');
 const { request } = require('express');
+const router=require('./toutes/routes');
 
 
 app.disable('x-powered-by');
@@ -13,6 +14,8 @@ app.use(body_parser.urlencoded());
 
 app.use(morgan('dev'));
 
+
+app.use('/api',router);
 
 const log=(request,response,next)=>{
     console.log("Logging")
