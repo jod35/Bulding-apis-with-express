@@ -4,7 +4,8 @@ const morgan = require('morgan');
 const cors= require('cors');
 const { request } = require('express');
 const router=require('./toutes/routes');
-
+const item_router =require('./resources/items');
+const user_router=require('./resources/users');
 
 app.disable('x-powered-by');
 
@@ -16,6 +17,8 @@ app.use(morgan('dev'));
 
 
 app.use('/api',router);
+app.use('/api/items',item_router);
+app.use('/api/users',user_router);
 
 const log=(request,response,next)=>{
     console.log("Logging")
