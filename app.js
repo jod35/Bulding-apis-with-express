@@ -23,6 +23,26 @@ const log=(request,response,next)=>{
     next();
 }
 
+
+const methods=['get /cats' , 'get /cats:id' , 'post /cats','put /cat:id','delete /cat:id']
+
+
+//create a router REST methods
+router.route('/cats')
+.get((request,response)=>{
+    response.send({"message":"Hello World"})
+})
+.post((request,response)=>{
+    response.send({"message":"yo"})
+})
+
+router.route('/cat:id')
+.patch()
+.put()
+.delete()
+
+
+
 app.use(log); //run for the entire api
 
 app.get('/',(request,response)=>{
