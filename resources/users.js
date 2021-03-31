@@ -1,7 +1,7 @@
 const user_router=require('express').Router();
 
 const controller =(request,response)=>{
-    response.send("This is a user route")
+    response.send({"message":"This is a user route"})
 }
 
 user_router.route('/')

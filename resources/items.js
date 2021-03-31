@@ -7,7 +7,9 @@ const controller =(request,response)=>{
 
 
 item_router.route('/')
-.get(controller)
+.get((request,response)=>{
+    response.status(404).send({message:"Not Found"});
+})
 .post(controller)
 
 
